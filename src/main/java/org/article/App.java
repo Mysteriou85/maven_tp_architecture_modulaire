@@ -7,8 +7,6 @@ import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.article.bll.BLLException;
 import org.article.bll.ProduitManager;
@@ -35,18 +33,44 @@ public class App extends Application {
     private Separator separator1 = new Separator(Orientation.HORIZONTAL);
     private Separator separator2 = new Separator(Orientation.HORIZONTAL);
 
+    // ***** Element : Bouton en bas de page *****
     private Button button_precedent = new Button("Précédent");
     private Button button_nouveau = new Button("Nouveau");
     private Button button_enregistrer = new Button("Enregistrer");
     private Button button_suprimer = new Button("Suprimer");
     private Button button_suivant = new Button("Suivant");
 
+    // ***** Element : Stylo *****
+    private Label label_stylo_couleur = new Label("Couleur :");
+    private Label label_stylo_typeMine = new Label("Type de mine :");
+
+    private ChoiceBox choiceBox_stylo_couleur = new ChoiceBox();
+
+    private ToggleGroup radioGroupe_styloe_typeMine = new ToggleGroup();
+    private RadioButton radioButton_stylo_crayonPapier = new RadioButton("Crayon à papier");
+    private RadioButton radioButton_stylo_crayonBille = new RadioButton("Crayon à bille");
+    private RadioButton radioButton_stylo_feutre = new RadioButton("Feutre");
+
+    // ***** Element : Pain *****
+    private Label label_pain_poids = new Label("Poids :");
+    private Label label_pain_datePeremption = new Label("Date de péremption :");
+
+    private TextField textField_pain_poids = new TextField();
+
+    private DatePicker datePicker_pain_datePeremption = new DatePicker();
+
+    // ***** Element : Glace *****
+    private Label label_glace_parfum = new Label("Parfum :");
+    private Label label_glace_datePeremption = new Label("Date de péremption :");
+    private Label label_glace_temperatureConservation = new Label("Température de conservation :");
+
+    private TextField textField_glace_parfum = new TextField();
+    private TextField textField_glace_temperatureConservation = new TextField();
+
+    private DatePicker datePicker_glace_datePeremption = new DatePicker();
 
     @Override
     public void start(Stage stage) {
-        //var javaVersion = SystemInfo.javaVersion();
-        //var javafxVersion = SystemInfo.javafxVersion();
-        //var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
 
         ProduitManager pm = ProduitManager.getInstance();
         try {
@@ -56,6 +80,10 @@ public class App extends Application {
         }
 
         GridPane root = new GridPane();
+
+        // ************************************************
+        // *****       Zone information général       *****
+        // ************************************************
 
         // ***** Titre *****
         GridPane.setColumnIndex(label_titreProduit, 0);
@@ -121,7 +149,7 @@ public class App extends Application {
         choiceBox_typeDeProduit.getItems().add("Stylo");
         choiceBox_typeDeProduit.getItems().add("Pain");
         choiceBox_typeDeProduit.getItems().add("Glace");
-        choiceBox_typeDeProduit.getItems().add("Carte postale");
+        // choiceBox_typeDeProduit.getItems().add("Carte postale");
 
         GridPane.setColumnIndex(choiceBox_typeDeProduit, 1);
         GridPane.setRowIndex(choiceBox_typeDeProduit, 6);
