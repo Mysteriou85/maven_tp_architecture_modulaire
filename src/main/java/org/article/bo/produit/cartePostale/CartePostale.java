@@ -1,60 +1,50 @@
 package org.article.bo.produit.cartePostale;
 
-import eu.unareil.bo.produit.Produit;
+import org.article.bo.produit.Produit;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CartePostale extends Produit {
-    TypeCartePostale type;
-    List<Auteur> lesAuteurs = new ArrayList<>();
+private List<Auteur> lesAuteurs;
+private String type;
+public CartePostale(long refProd, String marque, String libelle, long qteStock, float prixUnitaire,
+		List<Auteur> lesAuteurs, TypeCartePostale type) {
+	super(refProd, marque, libelle, qteStock, prixUnitaire);
+	this.lesAuteurs = lesAuteurs;
+	this.type = type.name();
+}
+public CartePostale(String marque, String libelle, long qteStock, float prixUnitaire, List<Auteur> lesAuteurs,
+		TypeCartePostale type) {
+	super(marque, libelle, qteStock, prixUnitaire);
+	this.lesAuteurs = lesAuteurs;
+	this.type = type.name();
+}
+public List<Auteur> getLesAuteurs() {
+	return lesAuteurs;
+}
+public void setLesAuteurs(List<Auteur> lesAuteurs) {
+	this.lesAuteurs = lesAuteurs;
+}
+public String getType() {
+	return type;
+}
+public void setType(String type) {
+	this.type = type;
+}
+@Override
+public String toString() {
+	StringBuffer sb= new StringBuffer();
+	int i=0;
+	for(Auteur a : lesAuteurs)
+	{
+		i++;
+		if (i!=1) {
+			sb.append(", ");
+		}
+		sb.append("auteur"+i+"=");
+		sb.append(a);
+	}
+	return "CartePostale ["+ super.toString() +", auteur(s)=" + sb.toString() + ", type=" + type + "]";
+}
 
-    // Constructor
-    public CartePostale() {
-        super();
-    }
-    public CartePostale(long refProd, String marque, String libelle, long qteStock, float prixUnitaire, List<Auteur> lesAuteurs, TypeCartePostale type) {
-        super(refProd, marque, libelle, qteStock, prixUnitaire);
-        this.setType(type);
-        this.setLesAuteurs(lesAuteurs);
-    }
-
-    public CartePostale(String marque, String libelle, long qteStock, float prixUnitaire, List<Auteur> lesAuteurs, TypeCartePostale type) {
-        super(marque, libelle, qteStock, prixUnitaire);
-        this.type = type;
-        this.lesAuteurs = lesAuteurs;
-    }
-
-    // Getter
-    public TypeCartePostale getType() {
-        return type;
-    }
-
-    public List<Auteur> getLesAuteurs() {
-        return lesAuteurs;
-    }
-
-    // Setter
-    public void setType(TypeCartePostale type) {
-        this.type = type;
-    }
-
-    public void setLesAuteurs(List<Auteur> lesAuteurs) {
-        this.lesAuteurs = lesAuteurs;
-    }
-
-    // Methode
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer();
-        sb.append(super.toString()).append(", ");
-        sb.append("auteurs=");
-        for(Auteur auteur : lesAuteurs) {
-            sb.append("auteur").append((lesAuteurs.indexOf(auteur))+1).append("=");
-            sb.append(auteur.getNom()).append(" ").append(auteur.getPrenom()).append(", ");
-        }
-        sb.append("type=").append(type);
-        sb.append(']');
-        return sb.toString();
-    }
 }

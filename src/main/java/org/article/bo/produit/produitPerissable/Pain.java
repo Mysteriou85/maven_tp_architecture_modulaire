@@ -2,41 +2,28 @@ package org.article.bo.produit.produitPerissable;
 
 import java.time.LocalDate;
 
-public class Pain extends ProduitPerissable{
+public class Pain extends ProduitPerissable {
+	int poids;
 
-    float poids;
+	public Pain(long refProd, String marque, String libelle, int poids, long qteStock,
+			float prixUnitaire) {
+		super(refProd, LocalDate.now().plusDays(2), marque, libelle, qteStock, prixUnitaire);
+		this.setPoids(poids);
+	}
+	public Pain(String marque, String libelle, int poids, long qteStock,
+			float prixUnitaire) {
+		super(LocalDate.now().plusDays(2), marque, libelle, qteStock, prixUnitaire);
+		this.setPoids(poids);
+	}
+	public int getPoids() {
+		return poids;
+	}
+	public void setPoids(int poids) {
+		this.poids = poids;
+	}
+	@Override
+	public String toString() {
+		return "Pain ["+super.toString() +", poids=" + poids +"g]";
+	}
 
-    // Constructor
-    public Pain() {
-        super();
-    }
-
-    public Pain(long refProd, String marque, String libelle, long qteStock, float prixUnitaire, float poids) {
-        super(refProd, marque, libelle, qteStock, prixUnitaire, LocalDate.now().plusDays(2));
-        this.setPoids(poids);
-    }
-
-    public Pain(String marque, String libelle, float poids, long qteStock, float prixUnitaire) {
-        this(0, marque, libelle, qteStock, prixUnitaire, poids);
-    }
-
-    // Getter
-    public float getPoids() {
-        return poids;
-    }
-
-    // Setter
-    public void setPoids(float poids) {
-        this.poids = poids;
-    }
-
-    // Methode
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer();
-        sb.append(super.toString()).append(", ");
-        sb.append("poids=").append(poids).append("g");
-        sb.append(']');
-        return sb.toString();
-    }
 }

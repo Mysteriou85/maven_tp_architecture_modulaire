@@ -3,12 +3,12 @@
  */
 package org.article.bo;
 
-import eu.unareil.bo.produit.*;
-import eu.unareil.bo.produit.cartePostale.Auteur;
-import eu.unareil.bo.produit.cartePostale.CartePostale;
-import eu.unareil.bo.produit.cartePostale.TypeCartePostale;
-import eu.unareil.bo.produit.produitPerissable.Glace;
-import eu.unareil.bo.produit.produitPerissable.Pain;
+import org.article.bo.produit.*;
+import org.article.bo.produit.cartePostale.Auteur;
+import org.article.bo.produit.cartePostale.CartePostale;
+import org.article.bo.produit.cartePostale.TypeCartePostale;
+import org.article.bo.produit.produitPerissable.Glace;
+import org.article.bo.produit.produitPerissable.Pain;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

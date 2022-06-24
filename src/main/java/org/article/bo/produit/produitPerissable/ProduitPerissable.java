@@ -1,44 +1,32 @@
 package org.article.bo.produit.produitPerissable;
 
-import eu.unareil.bo.produit.Produit;
+import org.article.bo.produit.Produit;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class ProduitPerissable extends Produit {
-    LocalDate dateLimiteConso;
+public abstract class ProduitPerissable extends Produit {
+	private LocalDate dateLimiteConso;
+public ProduitPerissable(long refProd,LocalDate dateLimiteConso, String marque, String libelle, long qteStock, float prixUnitaire) {
+		super(refProd, marque, libelle, qteStock, prixUnitaire);
+		this.dateLimiteConso=dateLimiteConso;
+		// TODO Auto-generated constructor stub
+	}
+public ProduitPerissable(LocalDate dateLimiteConso,String marque, String libelle, long qteStock, float prixUnitaire) {
+	super(marque, libelle, qteStock, prixUnitaire);
+	this.dateLimiteConso=dateLimiteConso;
+	// TODO Auto-generated constructor stub
+}
+public LocalDate getDateLimiteConso() {
+	return dateLimiteConso;
+}
+public void setDateLimiteConso(LocalDate dateLimiteConso) {
+	this.dateLimiteConso = dateLimiteConso;
+}
+@Override
+public String toString() {
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	return super.toString() +", dateLimiteConso=" +dateLimiteConso.format(formatter);
+}
 
-    // Construtor
-    public ProduitPerissable() {
-        super();
-    }
-
-    public ProduitPerissable(long refProd, String marque, String libelle, long qteStock, float prixUnitaire, LocalDate dateLimiteConso) {
-        super(refProd, marque, libelle, qteStock, prixUnitaire);
-        this.setDateLimiteConso(dateLimiteConso);
-    }
-
-    public ProduitPerissable(String marque, String libelle, long qteStock, float prixUnitaire, LocalDate dateLimiteConso) {
-        this(0, marque, libelle, qteStock, prixUnitaire, dateLimiteConso);
-    }
-
-    // Getter
-    public LocalDate getDateLimiteConso() {
-        return dateLimiteConso;
-    }
-
-    // Setter
-    public void setDateLimiteConso(LocalDate dateLimiteConso) {
-        this.dateLimiteConso = dateLimiteConso;
-    }
-
-    // Methode
-
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer();
-        sb.append(super.toString()).append(", ");
-        sb.append("dateLimiteConso=").append(dateLimiteConso.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        return sb.toString();
-    }
 }

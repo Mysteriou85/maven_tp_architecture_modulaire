@@ -1,53 +1,68 @@
 package org.article.bo.produit.cartePostale;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Auteur {
+long id;
+String prenom;
+String nom;
+List<CartePostale> lesCartes=new ArrayList<>();
+public String getPrenom() {
+	return prenom;
+}
+public void setPrenom(String prenom) {
+	this.prenom = prenom;
+}
+public Auteur(long id, String prenom, String nom) {
+	super();
+	this.setId(id);
+	this.setPrenom(prenom);
+	this.setNom(nom);
+}
+public Auteur(String prenom, String nom) {
+this(0,prenom,nom);
+}
+public String getNom() {
+	return nom;
+}
+public void setNom(String nom) {
+	this.nom = nom;
+}
 
-    private long id;
-    private String prenom;
-    private String nom;
-
-    // Constructor
-    public Auteur() {
-    }
-
-    public Auteur(String prenom, String nom) {
-        this.setPrenom(prenom);
-        this.setNom(nom);
-    }
-
-    public Auteur(long id, String prenom, String nom) {
-        this(prenom, nom);
-        this.setId(id);
-    }
-
-    // Getter
-    public long getId() { return id;}
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    // Setter
-    public void setId(long id) { this.id = id; }
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    // Methode
-    public String toString() {
-        final StringBuffer sb = new StringBuffer();
-        sb.append("Auteur [");
-        sb.append("prenom=").append(prenom);
-        sb.append(", nom=").append(nom);
-        sb.append(']');
-        return sb.toString();
-    }
+public long getId() {
+	return id;
+}
+public void setId(long id) {
+	this.id = id;
+}
+public List<CartePostale> getLesCartes() {
+	return lesCartes;
+}
+public void setLesCartes(List<CartePostale> lesCartes) {
+	this.lesCartes = lesCartes;
+}
+public void ajouterCarte(CartePostale carte) {
+	this.lesCartes.add(carte);
+}
+public void supprimerCarte(CartePostale carte) {
+	this.lesCartes.remove(carte);
+}
+@Override
+public String toString() {
+	StringBuilder builder = new StringBuilder();
+	builder.append("Auteur [");
+	if(id!=0)
+	{
+	builder.append("id=");
+	builder.append(id);
+	}
+	builder.append(", prenom=");
+	builder.append(prenom);
+	builder.append(", nom=");
+	builder.append(nom);
+	builder.append("]");
+	return builder.toString();
+}
 
 }

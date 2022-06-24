@@ -1,49 +1,76 @@
 package org.article.bo;
 
-import eu.unareil.bo.produit.Produit;
+import org.article.bo.produit.Produit;
 
-public class Ligne {
-    int quantite;
-    Produit produit;
+public class Ligne
+{
+	//Attributs
+	private int quantite;
+	private Produit produit;
+	
+	//Constructeurs
+	Ligne(Produit p, int qte) 
+	{
+			setProduit(p);
+			setQte(qte);
+	}
+	
+	//Getters et Setters
+	public int getQte()
+	{
+		return quantite;
+	}
 
-    // Contructor
-    public Ligne(Produit p, int quantite) {
-        this.setProduit(p);
-        this.setQuantite(quantite);
-    }
+	public void setQte(int qte)
+	{
+		this.quantite = qte;
+	}
+	
+	
+	
+	public Produit getProduit()
+	{
+		return this.produit;
+	}
 
-    // Getter
-    public int getQuantite() {
-        return quantite;
-    }
-
-    public Produit getProduit() {
-        return produit;
-    }
-
-    public double getPrix() {
-        return this.getQuantite() * produit.getPrixUnitaire();
-    }
-
-    // Setter
-    public void setQuantite(int quantite) {
-        this.quantite = quantite;
-    }
-
-    public void setProduit(Produit produit) {
-        this.produit = produit;
-    }
-
-    // Methode
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer();
-        sb.append(this.getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("produit=").append(produit);
-        sb.append(", qte=").append(quantite);
-        sb.append(", prix=").append(String.format("%.2f", this.getPrix())).append(" euro").append((this.getPrix() > 1) ? "s" : "");
-        sb.append(']');
-        return sb.toString();
-    }
+	private void setProduit(Produit p) 
+	{
+		this.produit = p;		
+		
+	}
+	
+	public float getPrix()
+	{
+		return produit.getPrixUnitaire()*quantite;
+	}
+	
+	
+	//Méthodes
+	public String toString()
+	{
+		StringBuffer buf = new StringBuffer();
+		buf.append("Ligne [");
+		if (produit != null) {
+			buf.append("produit=");
+			buf.append(getProduit().toString());
+			buf.append(", ");
+		}
+		buf.append(" qte=");
+		buf.append(getQte());
+		buf.append(", prix=");
+		buf.append(String.format("%.2f euros",getPrix()));
+		buf.append("]");
+		return buf.toString();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
