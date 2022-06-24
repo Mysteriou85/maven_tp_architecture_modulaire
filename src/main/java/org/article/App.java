@@ -34,11 +34,11 @@ public class App extends Application {
     private Separator separator2 = new Separator(Orientation.HORIZONTAL);
 
     // ***** Element : Bouton en bas de page *****
-    private Button button_precedent = new Button("Précédent");
+    private Button button_precedent = new Button("< Précédent");
     private Button button_nouveau = new Button("Nouveau");
     private Button button_enregistrer = new Button("Enregistrer");
     private Button button_suprimer = new Button("Suprimer");
-    private Button button_suivant = new Button("Suivant");
+    private Button button_suivant = new Button("Suivant >");
 
     // ***** Element : Stylo *****
     private Label label_stylo_couleur = new Label("Couleur :");
@@ -166,6 +166,12 @@ public class App extends Application {
 
         //root.getChildren().add(separator1);
         //root.getChildren().add(separator1);
+
+        // ************************************************
+        // *****       Zone produit particulier       *****
+        // ************************************************
+
+
 
         // ************************************************
         // *****       Zone boutton bas de page       *****
