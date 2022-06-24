@@ -71,9 +71,17 @@ public class ProduitManager {
     {
         boolean valide=true;
         StringBuilder sb= new StringBuilder();
-        if (produit==null)
-        {
+        if (produit == null) {
             throw new BLLException("Produit ne peut pas être null");
+        }
+        if (produit.getLibelle() == null) {
+            throw new BLLException("Le libellé ne peut pas être null");
+        }
+        if (produit.getMarque() == null) {
+            throw new BLLException("La marque ne peut pas être null");
+        }
+        if (produit.getPrixUnitaire() <= 0) {
+            throw new BLLException("Le prix ne peut pas être inférieur ou égale à 0€");
         }
         if(!valide) {
             throw new BLLException(sb.toString());
