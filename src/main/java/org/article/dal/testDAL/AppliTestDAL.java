@@ -1,4 +1,4 @@
-package org.article.dal;
+package org.article.dal.testDAL;
 
 import org.article.bo.produit.Produit;
 import org.article.bo.produit.Stylo;
@@ -7,6 +7,7 @@ import org.article.bo.produit.cartePostale.CartePostale;
 import org.article.bo.produit.cartePostale.TypeCartePostale;
 import org.article.bo.produit.produitPerissable.Glace;
 import org.article.bo.produit.produitPerissable.Pain;
+import org.article.dal.DALException;
 import org.article.dal.jdbc.AuteurJdbcImpl;
 import org.article.dal.jdbc.ProduitJdbcImpl;
 
